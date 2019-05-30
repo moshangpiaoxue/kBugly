@@ -1,0 +1,27 @@
+apply plugin: 'com.android.application'
+// 注：需要配置符号表时，使用bugly插件
+apply plugin: 'bugly'
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.mo.kbugly"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation 'com.android.support:appcompat-v7:26.0.0'
+    implementation project(':kbuglylib')
+}
